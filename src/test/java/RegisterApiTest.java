@@ -16,7 +16,7 @@ public class RegisterApiTest {
         String url = "https://api.automate.io/auth/register";
         JSONObject jsonObject = new JSONObject();
         String testUserName = "Example bot";
-        String testUserEmail = "kushal"+ System.currentTimeMillis() +"@test.io";
+        String testUserEmail = "prashant"+ System.currentTimeMillis() +"@test.io";
 
         jsonObject.put("email", testUserEmail);
         jsonObject.put("name", testUserName);

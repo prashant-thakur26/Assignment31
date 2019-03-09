@@ -14,10 +14,10 @@ public class LoginApiTest {
         // Given
         String url = "https://api.automate.io/auth/login";
         JSONObject jsonObject = new JSONObject();
-        String testUserEmail = "kushal.da@sync.io";
+        String testUserEmail = "prashant@example.com";
 
         jsonObject.put("email", testUserEmail);
-        jsonObject.put("password", "honey##2609");
+        jsonObject.put("password", "prashant1234");
 
         // When
         Response response = HttpUtil.post(url, jsonObject);
@@ -28,7 +28,7 @@ public class LoginApiTest {
         assertThat(response.code()).isEqualTo(HttpURLConnection.HTTP_OK);
         JSONObject responseBody = new JSONObject(response.body().string());
         assertThat(responseBody.get("status")).isEqualTo("success");
-        assertThat(responseBody.getJSONObject("data").get("name")).isEqualTo("Kushal Da");
+        assertThat(responseBody.getJSONObject("data").get("name")).isEqualTo("Prashant Thakur");
     }
 
     @Test
@@ -36,10 +36,10 @@ public class LoginApiTest {
         // Given
         String url = "https://api.automate.io/auth/login";
         JSONObject jsonObject = new JSONObject();
-        String testUserEmail = "kushal.da@sync.io";
+        String testUserEmail = "prashant@example.com";
 
         jsonObject.put("email", testUserEmail);
-        jsonObject.put("password", "honey##2609-wrong");
+        jsonObject.put("password", "wrongpassword");
 
         // When
         Response response = HttpUtil.post(url, jsonObject);

@@ -14,7 +14,7 @@ public class ForgotPasswordTest {
         // Given
         String url = "https://api.automate.io/auth/forgotPassword";
         JSONObject jsonObject = new JSONObject();
-        String testUserEmail = "kushal.da@sync.io";
+        String testUserEmail = "prashant@example.com";
         jsonObject.put("email", testUserEmail);
 
         // When
