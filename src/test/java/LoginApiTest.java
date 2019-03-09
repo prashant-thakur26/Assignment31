@@ -30,4 +30,25 @@ public class LoginApiTest {
         assertThat(responseBody.get("status")).isEqualTo("success");
         assertThat(responseBody.getJSONObject("data").get("name")).isEqualTo("Kushal Da");
     }
+
+    @Test
+    public void testUnauthorized() throws IOException {
+        // Given
+        String url = "https://api.automate.io/auth/login";
+        JSONObject jsonObject = new JSONObject();
+        String testUserEmail = "kushal.da@sync.io";
+
+        jsonObject.put("email", testUserEmail);
+        jsonObject.put("password", "honey##2609-wrong");
+
+        // When
+        Response response = HttpUtil.post(url, jsonObject);
+
+        // Then
+        assertThat(response).isNotNull();
+        assertThat(response.code()).isEqualTo(HttpURLConnection.HTTP_UNAUTHORIZED);
+        JSONObject responseObject = new JSONObject(response.body().string());
+        assertThat(responseObject.get("status")).isEqualTo("error");
+        assertThat(responseObject.getJSONObject("error").get("message")).isEqualTo("Login email or password incorrect.");
+    }
 }
